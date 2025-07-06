@@ -889,6 +889,7 @@ class Setup():
             dir = dest[:dest.rfind('/') + 1]
             if not os.path.exists(dir):
                 print('Making directory ' + dir + ' with parents')
+                print(destinations)
                 os.makedirs(dir)
         if recursive:
             target = destinations[0]
