@@ -166,6 +166,7 @@ class Ponysay():
         appendset = set()
         rc = []
         _ponydirs = cls.__share(directory)
+        print(directory)
         for ponydir in _ponydirs:
             if (ponydir is not None) and os.path.isdir(ponydir) and (ponydir not in appendset):
                 rc.append(ponydir)
