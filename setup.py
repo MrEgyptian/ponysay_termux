@@ -961,7 +961,7 @@ class Setup():
         '''
         Parses configurations
         '''
-        
+        global prefix
         (defaults, conf) = ({}, {})
 
         for command in commands:
