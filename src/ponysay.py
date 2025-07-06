@@ -534,7 +534,7 @@ class Ponysay():
         ## Get all ponies, with quotes
         oldponies = {}
         self.__getAllPonies(standard, extra, oldponies, quoters)
-        print(ponydirs)
+        #print(ponydirs)
         ## Apply restriction
         ponies = self.__applyRestriction(oldponies, ponydirs)
         
