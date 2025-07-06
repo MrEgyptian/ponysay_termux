@@ -511,9 +511,9 @@ class Setup():
                     data = ('(%s ' % command) + data[len('(ponysay '):]
                 elif '\n(ponysay\n' in data:
                     edpos = data.find('\n(ponysay\n')
-                    data = data[:edpos] + ('\n(%s\n' % command) + data[edpas + len('\n(ponysay\n'):]
+                    data = data[:edpos] + ('\n(%s\n' % command) + data[edpos + len('\n(ponysay\n'):]
                 elif '\n(ponysay ' in data:
-                    data = data[:edpos] + ('\n(%s ' % command) + data[edpas + len('\n(ponysay '):]
+                    data = data[:edpos] + ('\n(%s ' % command) + data[edpos + len('\n(ponysay '):]
                 else:
                     raise Exception('File %s does not look like expected' % source)
 
