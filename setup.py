@@ -290,7 +290,7 @@ class Setup():
             elif method == 'clean-old':  self.cleanOld()
             else:
                 conf = self.configure(opts.opts)
-
+                print(f'\033[1;34m::\033[39mConfiguring ponysay...\033[21m {conf}\033[39m')
                 if method == 'build':
                     checkFreedom()
                     setup_config()
