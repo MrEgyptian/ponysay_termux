@@ -32,11 +32,13 @@ sharefiles = [('ucs', 'ucsmap')]
 commands = ['ponysay', 'ponythink', 'ponysay-tool']
 
 if is_termux:
-    shells=[('bash', '/data/data/com.termux/files/usr/share/bash-completion/completions/ponysay', 'GNU Bash'),
-            ('fish', '/data/data/com.termux/files/usr/share/fish/vendor_completions.d/ponysay.fish', 'Friendly interactive shell'),
-            ('zsh', '/data/data/com.termux/files/usr/share/zsh/site-functions/_ponysay', 'zsh')]
+    shells = [
+        ('bash', '/data/data/com.termux/files/usr/share/bash-completion/completions/ponysay', 'GNU Bash'),
+        ('fish', '/data/data/com.termux/files/usr/share/fish/vendor_completions.d/ponysay.fish', 'Friendly interactive shell'),
+        ('zsh', '/data/data/com.termux/files/usr/share/zsh/site-functions/_ponysay', 'zsh')]
 else:
-    shells = [('bash', '/usr/share/bash-completion/completions/ponysay', 'GNU Bash'),
+    shells = [
+          ('bash', '/usr/share/bash-completion/completions/ponysay', 'GNU Bash'),
           ('fish', '/usr/share/fish/vendor_completions.d/ponysay.fish', 'Friendly interactive shell'),
           ('zsh', '/usr/share/zsh/site-functions/_ponysay', 'zsh')]
 

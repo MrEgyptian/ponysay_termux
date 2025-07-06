@@ -39,6 +39,7 @@ import lists
 from metadata import *
 
 
+is_termux= 'TERMUX_VERSION' in os.environ
 
 class Ponysay():
     '''
@@ -185,6 +186,12 @@ class Ponysay():
                 return None
             return a + b
         # TODO use only ./ in development mode
+        if is_termux:
+            return [cat(cls.__parseFile(item), file) for item in [
+                    '$XDG_DATA_HOME/ponysay/',
+                    '$HOME/.local/share/ponysay/',
+                    '/data/data/com.termux/files/usr/share/ponysay/'
+                   ]]
         return [cat(cls.__parseFile(item), file) for item in [
                 '$XDG_DATA_HOME/ponysay/',
                 '$HOME/.local/share/ponysay/',
