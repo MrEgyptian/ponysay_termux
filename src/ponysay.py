@@ -169,10 +169,11 @@ class Ponysay():
         _ponydirs = cls.__share(directory)
         #print(directory,_ponydirs)
         for ponydir in _ponydirs:
+            print(ponydir)
             if (ponydir is not None) and os.path.isdir(ponydir) and (ponydir not in appendset):
                 rc.append(ponydir)
                 appendset.add(ponydir)
-                print(ponydir)
+                
         return rc
     
     
