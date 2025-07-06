@@ -190,6 +190,8 @@ class Ponysay():
         def cat(a, b):
             if a is None:
                 return None
+            if a.startswith('/data/data/com.termux/files/'):
+                return a
             return a + b
         # TODO use only ./ in development mode
         if is_termux:
