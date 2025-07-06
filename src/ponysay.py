@@ -188,9 +188,10 @@ class Ponysay():
         @return  :list<str>  Absolute file names
         '''
         def cat(a, b):
-            print(f"{a} ....{b}")
+            #print(f"{a} ....{b}")
             if a is None:
                 return None
+            print(f'a is {a}',a.startswith('/data/data/com.termux/files/'))
             if a.startswith('/data/data/com.termux/files/'):
                 print(f"file {a}")
                 return a
