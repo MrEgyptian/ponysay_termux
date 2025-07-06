@@ -964,7 +964,7 @@ class Setup():
         '''
         global prefix
         (defaults, conf) = ({}, {})
-
+        print(prefix + 'configure.py: Configuring ponysay...')
         for command in commands:
             conf[command] = prefix+'/bin/' + command
         conf['shared-cache'] = prefix+'/var/cache/ponysay'
