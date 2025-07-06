@@ -191,6 +191,7 @@ class Ponysay():
             if a is None:
                 return None
             if a.startswith('/data/data/com.termux/files/'):
+                print(f"file {a}")
                 return a
             return a + b
         # TODO use only ./ in development mode
