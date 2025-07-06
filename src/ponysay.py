@@ -191,10 +191,11 @@ class Ponysay():
             #print(f"{a} ....{b}")
             if a is None:
                 return None
-            print(f'a is {a}',a.startswith('/data/data/com.termux/files/'))
+            print(f"a is {a} {a.startswith('/data/data/com.termux/files/')}")
             if a.startswith('/data/data/com.termux/files/'):
-                print(f"file {a}")
-                return a
+                if a.startswith('/data/data/com.termux/files/data/data/com.termux/files/'):
+                    a=a.replace('/data/data/com.termux/files/data/data/com.termux/files/','/data/data/com.termux/files/')
+                
             return a + b
         # TODO use only ./ in development mode
         if is_termux:
