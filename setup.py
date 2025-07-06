@@ -11,6 +11,10 @@ PONYSAY_VERSION = '3.0.4'
 
 project_dir = os.path.dirname(__file__)
 is_termux= 'TERMUX_VERSION' in os.environ
+if is_termux:
+            prefix = '/usr'
+else:
+            prefix = '/data/data/com.termux/files/usr'
 manpages = [('en', 'English'),  # must be first
             ('es', 'Spanish'),
             ('sv', 'Swedish'),
@@ -424,6 +428,7 @@ class Setup():
                         data = data.replace('#!/usr/bin/env python3', '#!/usr/bin/env ' + env)
                     else:
                         data = data.replace('#!/usr/bin/env python', '#!/usr/bin/env ' + env)
+                    
                     data = data.replace('/usr/share/ponysay/', conf['share-dir'] + ('' if conf['share-dir'].endswith('/') else '/'))
                     data = data.replace('/etc/', conf['sysconf-dir'] + ('' if conf['sysconf-dir'].endswith('/') else '/'))
                     data = data.replace('\nVERSION = \'dev\'', '\nVERSION = \'%s\'' % (PONYSAY_VERSION))
@@ -960,17 +965,17 @@ class Setup():
         (defaults, conf) = ({}, {})
 
         for command in commands:
-            conf[command] = '/usr/bin/' + command
-        conf['shared-cache'] = '/var/cache/ponysay'
+            conf[command] = prefix+'/bin/' + command
+        conf['shared-cache'] = prefix+'/var/cache/ponysay'
         for shell in shells:
             conf[shell[0]] = shell[1]
-        conf['pdf'] = '/usr/doc'
+        conf['pdf'] = prefix+'/doc'
         conf['pdf-compression'] = 'gz'
-        conf['info'] = '/usr/share/info'
+        conf['info'] = prefix+'/share/info'
         conf['info-install'] = 'My Little Ponies for your terminal'
         conf['info-compression'] = 'gz'
         for manpage in manpages:
-            conf['man-' + manpage[0]] = '/usr/share/man'
+            conf['man-' + manpage[0]] = prefix+'/share/man'
             conf['man-' + manpage[0] + '-compression'] = 'gz'
         conf['custom-env-python'] = 'python3'
         for sharedir in sharedirs:
@@ -995,10 +1000,7 @@ class Setup():
         if opts['--private'] is not None:
             if opts['--prefix'] is None:
                 opts['--prefix'] = [os.environ['HOME'] + '/.local']
-        if is_termux:
-            prefix = '/usr'
-        else:
-            prefix = '/data/data/com.termux/files/usr'
+        
         if opts['--prefix'] is not None:
             prefix = opts['--prefix'][0]
             for key in conf:
@@ -1087,8 +1089,8 @@ class Setup():
                     for item in coll[2]:
                         defaults[item] = conf[item] = defaults[item].replace(coll[1], coll[1] if opts['--with-' + coll[0]][0] is None else opts['--with-' + coll[0]][0]);
         else:
-            for coll in [['shell', '/usr/share', [item[0] for item in shells]],
-                        ['man', '/usr/share/man', ['man-' + item[0] for item in manpages]],
+            for coll in [['shell', prefix+'/share', [item[0] for item in shells]],
+                        ['man', prefix+'/share/man', ['man-' + item[0] for item in manpages]],
                         ['man-compression', 'gz', ['man-' + item[0] + '-compression' for item in manpages]]
                         ]:
                 if opts['--without-' + coll[0]] is not None:
