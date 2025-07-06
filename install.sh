@@ -11,5 +11,5 @@ for pkgname in coreutils python gzip texinfo info util-linux; do
         pkg install -y "$pkgname"
     fi
 done
-
+python setup.py install --freedom=partial
 echo "All required packages are installed ."
