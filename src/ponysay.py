@@ -162,15 +162,17 @@ class Ponysay():
         
         @param   directory:str  The directory base name
         @return  :list<str>     Absolute directory names
+
         '''
         appendset = set()
         rc = []
         _ponydirs = cls.__share(directory)
-        print(directory,_ponydirs)
+        #print(directory,_ponydirs)
         for ponydir in _ponydirs:
             if (ponydir is not None) and os.path.isdir(ponydir) and (ponydir not in appendset):
                 rc.append(ponydir)
                 appendset.add(ponydir)
+                print(ponydir)
         return rc
     
     
