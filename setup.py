@@ -963,6 +963,8 @@ class Setup():
         Parses configurations
         '''
         global prefix
+        if is_termux:
+            prefix = '/data/data/com.termux/files/usr'
         (defaults, conf) = ({}, {})
         print(prefix + 'configure.py: Configuring ponysay...')
         for command in commands:
